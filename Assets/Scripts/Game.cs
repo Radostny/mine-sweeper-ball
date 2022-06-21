@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -7,13 +5,13 @@ public class Game : MonoBehaviour
     [SerializeField] private Vector2Int _boardSize;
     [SerializeField] private GameBoard _board;
     [SerializeField] private Camera _camera;
+    [SerializeField] private GameTileContentFactory _contentFactory;
 
     private Ray _touchRay => _camera.ScreenPointToRay(Input.mousePosition);
-    //visualize mf to see how it actually works on screen
-
+    
     void Start()
     {
-        _board.Initialize(_boardSize);
+        _board.Initialize(_boardSize, _contentFactory);
     }
 
     void Update()
@@ -28,5 +26,10 @@ public class Game : MonoBehaviour
     private void HandleTouch()
     {
         GameTile tile = _board.GetTile(_touchRay);
+        if (tile != null)
+        {
+            _board.ToggleMine(tile);
+            //tile.Content = _contentFactory.Get(GameTileContentType.Mine);
+        }
     }
 }
