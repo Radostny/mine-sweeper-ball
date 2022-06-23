@@ -3,7 +3,20 @@ using UnityEngine;
 public class GameTile : MonoBehaviour
 {
     [SerializeField] private Transform _arrow;
+    [SerializeField] private GameObject _dangerSign;
     private GameTileContent _content;
+    
+    public int Index { get; set; }
+    
+    private uint _mineCounter;
+    public uint MineCounter => _mineCounter;
+
+    public void IncreaseMineCounter()
+    {
+        Debug.Log("_mineCounter BEFORE: " + _mineCounter );
+        _mineCounter++;
+        Debug.Log("_mineCounter AFTER: " + _mineCounter );
+    }
 
     public GameTileContent Content
     {
@@ -17,5 +30,32 @@ public class GameTile : MonoBehaviour
             _content = value;
             _content.transform.localPosition = transform.localPosition;
         }
+    }
+
+    public void ShowCounter()
+    {
+        if (_content.Type != GameTileContent.GameTileContentType.Mine)
+        {
+            if (_mineCounter > 0)
+            {
+                _dangerSign.SetActive(true);
+                _arrow.gameObject.SetActive(false);
+            }
+            else
+            {
+                _dangerSign.SetActive(false);
+                _arrow.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            _dangerSign.SetActive(false);
+            _arrow.gameObject.SetActive(true);
+        }
+    }
+
+    public void ClearTitle()
+    {
+        _mineCounter = 0;
     }
 }
