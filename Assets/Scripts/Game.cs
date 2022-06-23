@@ -20,6 +20,11 @@ public class Game : MonoBehaviour
         {
             HandleTouch();
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            _board.LogTileInfo(_touchRay);
+        }
         
     }
 

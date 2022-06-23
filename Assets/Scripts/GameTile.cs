@@ -8,15 +8,7 @@ public class GameTile : MonoBehaviour
     
     public int Index { get; set; }
     
-    private uint _mineCounter;
-    public uint MineCounter => _mineCounter;
-
-    public void IncreaseMineCounter()
-    {
-        Debug.Log("_mineCounter BEFORE: " + _mineCounter );
-        _mineCounter++;
-        Debug.Log("_mineCounter AFTER: " + _mineCounter );
-    }
+    public uint MineCounter { get; set; }
 
     public GameTileContent Content
     {
@@ -36,7 +28,7 @@ public class GameTile : MonoBehaviour
     {
         if (_content.Type != GameTileContent.GameTileContentType.Mine)
         {
-            if (_mineCounter > 0)
+            if (MineCounter > 0)
             {
                 _dangerSign.SetActive(true);
                 _arrow.gameObject.SetActive(false);
@@ -56,6 +48,6 @@ public class GameTile : MonoBehaviour
 
     public void ClearTitle()
     {
-        _mineCounter = 0;
+        MineCounter = 0;
     }
 }
