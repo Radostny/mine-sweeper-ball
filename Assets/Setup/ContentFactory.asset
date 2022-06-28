@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf853695f0d23440b1bcf335e350dd3, type: 3}
   m_Name: ContentFactory
   m_EditorClassIdentifier: 
-  _emptyPrefab: {fileID: 0}
-  _minePrefab: {fileID: 0}
+  _emptyPrefab: {fileID: -1813011745925775400, guid: c6786730028903c419366ccfc6c7309c, type: 3}
+  _minePrefab: {fileID: -7971846801287967996, guid: a032528310d8ded4ebd126a9a33901b1, type: 3}

@@ -380,6 +380,7 @@ MonoBehaviour:
   _boardSize: {x: 9, y: 9}
   _board: {fileID: 494027970}
   _camera: {fileID: 963194227}
+  _contentFactory: {fileID: 11400000, guid: 8e658318827e3f741ae8be25aee13b7a, type: 2}
 --- !u!4 &1717488797
 Transform:
   m_ObjectHideFlags: 0
