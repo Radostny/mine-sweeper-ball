@@ -4,6 +4,7 @@ public class GameTile : MonoBehaviour
 {
     [SerializeField] private Transform _arrow;
     [SerializeField] private GameObject _dangerSign;
+    [SerializeField] private GameObject[] _diceFaces;
     private GameTileContent _content;
     
     public int Index { get; set; }
@@ -30,19 +31,30 @@ public class GameTile : MonoBehaviour
         {
             if (MineCounter > 0)
             {
-                _dangerSign.SetActive(true);
+                //_dangerSign.SetActive(true);
+                ClearTitleFace();
                 _arrow.gameObject.SetActive(false);
+                _diceFaces[MineCounter - 1].SetActive(true);
+
             }
             else
             {
-                _dangerSign.SetActive(false);
+                ClearTitleFace();
                 _arrow.gameObject.SetActive(true);
             }
         }
         else
         {
-            _dangerSign.SetActive(false);
+            ClearTitleFace();
             _arrow.gameObject.SetActive(true);
+        }
+    }
+
+    private void ClearTitleFace()
+    {
+        foreach (var face in _diceFaces)
+        {
+            face.SetActive(false);
         }
     }
 
