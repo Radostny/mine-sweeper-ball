@@ -19,5 +19,17 @@ public class PlayerController : MonoBehaviour
         float hInput = Input.GetAxis("Horizontal");
         playerRb.AddForce(Vector3.forward * vInput * _speed);
         playerRb.AddForce(Vector3.right * hInput * _speed);
+        AccelerometerTurnOn();
+    }
+
+    private void AccelerometerTurnOn(bool isFlat = true)
+    {
+        var tilt = Input.acceleration;
+        if (isFlat)
+        {
+            tilt = Quaternion.Euler(90f, 0, 0) * tilt;
+        }
+        playerRb.AddForce(tilt * _speed);
+        Debug.DrawRay(transform.position + Vector3.up, tilt, Color.cyan);
     }
 }
