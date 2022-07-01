@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using static GameTileContent;
 
@@ -33,6 +34,7 @@ public class GameBoard : MonoBehaviour
         // GameTile motherMine = _tiles[0];
         // motherMine.Content = _contentFactory.Get(GameTileContentType.Mine);
         ToggleMine(_tiles[0]);
+        //_tiles[0].HideMine();
         SurroundMinesWithCounters();
     }
 
@@ -83,6 +85,10 @@ public class GameBoard : MonoBehaviour
         else
         {
             tile.Content = _contentFactory.Get(GameTileContentType.Mine);
+            if (GameModeMachine.CurrentMode == ModeType.Setup)
+            {
+                tile.Content.Hide();
+            }
         }
         SurroundMinesWithCounters();
     }

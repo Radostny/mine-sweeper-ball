@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -11,6 +12,7 @@ public class Game : MonoBehaviour
     
     void Start()
     {
+        Debug.Log("Game mode is " + GameModeMachine.CurrentMode);
         _board.Initialize(_boardSize, _contentFactory);
     }
 

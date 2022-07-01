@@ -15,6 +15,12 @@ public class GameTileContentFactory : ScriptableObject
         Destroy(content.gameObject);
     }
 
+    public void Hide(GameTileContent content)
+    {
+        content.gameObject.SetActive(false);
+        Debug.Log("I hid something :)");
+    }
+
     public GameTileContent Get(GameTileContentType type)
     {
         switch (type)

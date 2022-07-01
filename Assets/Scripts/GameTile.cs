@@ -25,6 +25,11 @@ public class GameTile : MonoBehaviour
         }
     }
 
+    public void HideMine()
+    {
+        _content.Hide();
+    }
+
     public void ShowCounter()
     {
         if (_content.Type != GameTileContent.GameTileContentType.Mine)
