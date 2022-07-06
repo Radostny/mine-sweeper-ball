@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,15 @@ public class DigMineToggler : MonoBehaviour
 
     private void OnToggleChanged(bool active)
     {
-        var msg = active ? "toggle 1" : "toggle 2";
+        if (active)
+        {
+            GameModeMachine.CurrentMode = ModeType.Setup;
+        }
+        else
+        {
+            GameModeMachine.CurrentMode = ModeType.Play;
+        }
+        var msg = GameModeMachine.CurrentMode;
         Debug.Log(msg);
     }
 }

@@ -85,7 +85,7 @@ public class GameBoard : MonoBehaviour
         else
         {
             tile.Content = _contentFactory.Get(GameTileContentType.Mine);
-            if (GameModeMachine.CurrentMode == ModeType.Setup)
+            if (GameModeMachine.CurrentMode == ModeType.Play)
             {
                 tile.Content.Hide();
             }
