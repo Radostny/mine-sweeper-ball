@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed = 5;
+    [SerializeField] private GameBoard _board;
     private Rigidbody playerRb;
     
     // Start is called before the first frame update
@@ -20,6 +21,12 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(Vector3.forward * vInput * _speed);
         playerRb.AddForce(Vector3.right * hInput * _speed);
         AccelerometerTurnOn();
+
+        var tileBelow = _board.GetTile(transform.position.x, transform.position.z);
+        if (tileBelow.Content.Type == GameTileContent.GameTileContentType.Mine)
+        {
+            Debug.Log("*BOOM!*");
+        } 
     }
 
     private void AccelerometerTurnOn(bool isFlat = true)

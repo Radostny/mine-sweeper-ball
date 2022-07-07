@@ -76,6 +76,17 @@ public class GameBoard : MonoBehaviour
         return null;
     }
 
+    public GameTile GetTile(float worldX, float worldZ)
+    {
+        int x = (int)(worldX + _size.x * 0.5f);
+        int y = (int)(worldZ + _size.y * 0.5f);
+        if (x >= 0 && x < _size.x && y >= 0 && y <= _size.y)
+        {
+            return _tiles[x + y * _size.x];
+        }
+        return null;
+    }
+
     public void ToggleMine(GameTile tile)
     {
         if (tile.Content.Type == GameTileContentType.Mine)
@@ -108,7 +119,7 @@ public class GameBoard : MonoBehaviour
             }
         }
     }
-
+    
     private void IncreaseAllNeighbors(GameTile t)
     {
         int neighborN = t.Index + _size.x;

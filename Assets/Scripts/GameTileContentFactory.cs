@@ -18,7 +18,6 @@ public class GameTileContentFactory : ScriptableObject
     public void Hide(GameTileContent content)
     {
         content.gameObject.SetActive(false);
-        Debug.Log("I hid something :)");
     }
 
     public GameTileContent Get(GameTileContentType type)
