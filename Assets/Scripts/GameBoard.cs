@@ -36,6 +36,13 @@ public class GameBoard : MonoBehaviour
         ToggleMine(_tiles[0]);
         //_tiles[0].HideMine();
         SurroundMinesWithCounters();
+        Events.onGameModeChanged.AddListener(Refresh);
+    }
+
+    private void Refresh()
+    {
+        Debug.Log("I am the GameBoard have just heard the mode was changed and now it's "
+                  + GameModeMachine.CurrentMode);
     }
 
     public void SurroundMinesWithCounters()

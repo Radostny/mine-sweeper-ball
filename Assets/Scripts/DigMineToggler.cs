@@ -24,7 +24,7 @@ public class DigMineToggler : MonoBehaviour
         {
             GameModeMachine.CurrentMode = ModeType.Play;
         }
-        var msg = GameModeMachine.CurrentMode;
-        Debug.Log(msg);
+        
+        Events.onGameModeChanged.Invoke();
     }
 }
