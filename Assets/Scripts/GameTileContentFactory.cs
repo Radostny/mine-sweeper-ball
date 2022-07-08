@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static GameTileContent;
@@ -15,9 +16,17 @@ public class GameTileContentFactory : ScriptableObject
         Destroy(content.gameObject);
     }
 
-    public void Hide(GameTileContent content)
+    public void HideOrShow(GameTileContent content)
     {
-        content.gameObject.SetActive(false);
+        if (GameModeMachine.CurrentMode == ModeType.Play)
+        {
+            content.gameObject.SetActive(false);
+        }
+        else
+        {
+            content.gameObject.SetActive(true);
+        }
+        
     }
 
     public GameTileContent Get(GameTileContentType type)

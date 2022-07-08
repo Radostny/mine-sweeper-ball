@@ -41,8 +41,12 @@ public class GameBoard : MonoBehaviour
 
     private void Refresh()
     {
-        Debug.Log("I am the GameBoard have just heard the mode was changed and now it's "
+        Debug.Log("I am the GameBoard and have just heard the mode was changed and now it's "
                   + GameModeMachine.CurrentMode);
+        foreach (var tile in _tiles)
+        {
+            tile.HideMine();
+        }
     }
 
     public void SurroundMinesWithCounters()
@@ -105,7 +109,7 @@ public class GameBoard : MonoBehaviour
             tile.Content = _contentFactory.Get(GameTileContentType.Mine);
             if (GameModeMachine.CurrentMode == ModeType.Play)
             {
-                tile.Content.Hide();
+                tile.Content.HideOrShow();
             }
         }
         SurroundMinesWithCounters();

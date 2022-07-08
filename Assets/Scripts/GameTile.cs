@@ -27,7 +27,7 @@ public class GameTile : MonoBehaviour
 
     public void HideMine()
     {
-        _content.Hide();
+        _content.HideOrShow();
     }
 
     public void ShowCounter()

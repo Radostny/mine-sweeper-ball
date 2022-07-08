@@ -12,9 +12,9 @@ public class GameTileContent : MonoBehaviour
         OriginFactory.Reclaim(this);
     }
 
-    public void Hide()
+    public void HideOrShow()
     {
-        OriginFactory.Hide(this);
+        OriginFactory.HideOrShow(this);
     }
     
     public enum GameTileContentType
