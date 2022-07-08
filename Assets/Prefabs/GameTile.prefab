@@ -556,6 +556,7 @@ MonoBehaviour:
   - {fileID: 3622526220239960841}
   - {fileID: 4613675413894218264}
   - {fileID: 8697677293511012699}
+  _faded: {fileID: 6021616102654607949}
 --- !u!1 &4613675413894218264
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed = 5;
     [SerializeField] private GameBoard _board;
     private Rigidbody playerRb;
+    private GameTile _lastTile;
     
     // Start is called before the first frame update
     void Start()
@@ -23,10 +24,20 @@ public class PlayerController : MonoBehaviour
         AccelerometerTurnOn();
 
         var tileBelow = _board.GetTile(transform.position.x, transform.position.z);
-        if (tileBelow.Content.Type == GameTileContent.GameTileContentType.Mine)
+        if (tileBelow != _lastTile)
         {
-            Debug.Log("*BOOM!*");
-        } 
+            _lastTile = tileBelow;
+            Debug.Log("It's another tile");
+            if (tileBelow.Content.Type == GameTileContent.GameTileContentType.Mine)
+            {
+                Debug.Log("*BOOM!*");
+            }
+
+            if (tileBelow.Revealed == false)
+            {
+                tileBelow.Reveal();
+            }
+        }
     }
 
     private void AccelerometerTurnOn(bool isFlat = true)

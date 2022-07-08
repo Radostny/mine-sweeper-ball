@@ -5,10 +5,12 @@ public class GameTile : MonoBehaviour
     [SerializeField] private Transform _arrow;
     [SerializeField] private GameObject _dangerSign;
     [SerializeField] private GameObject[] _diceFaces;
+    [SerializeField] private GameObject _faded;
     private GameTileContent _content;
     
     public int Index { get; set; }
-    
+    public bool Revealed { get; set; }
+
     public uint MineCounter { get; set; }
 
     public GameTileContent Content
@@ -30,13 +32,17 @@ public class GameTile : MonoBehaviour
         _content.HideOrShow();
     }
 
+    public void Reveal()
+    {
+        _faded.SetActive(false);
+    }
+
     public void ShowCounter()
     {
         if (_content.Type != GameTileContent.GameTileContentType.Mine)
         {
             if (MineCounter > 0)
             {
-                //_dangerSign.SetActive(true);
                 ClearTitleFace();
                 _arrow.gameObject.SetActive(false);
                 _diceFaces[MineCounter - 1].SetActive(true);
